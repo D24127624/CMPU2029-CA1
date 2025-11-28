@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/kms.csproj" />
+  <Folder Name="/test/">
+    <Project Path="test/kms.test.csproj" />
+  </Folder>
+</Solution>

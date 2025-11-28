@@ -1,0 +1,4 @@
+{
+  "StorageType": "SQLITE",
+  "ConnectionString": "Data Source=kms.sqlite.db"
+}

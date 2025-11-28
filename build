@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e -x
+
+# This script builds, tests, and runs the Kennel Management System project.
+
+# --- Build & Test ---
+echo "Building & testing the project..."
+dotnet test
+
+# --- Run ---
+echo "Running the project..."
+dotnet run --project src/kms.csproj
