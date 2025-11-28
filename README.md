@@ -54,7 +54,7 @@ More details about the assessment requirements can be found [here](docs/CMPU2029
 
 ## 🗂️ Documentation
 
-Go to [about_kms.md](docs/about_kms.md) to read more details about this solution and the functionality provided.
+Go to [docs](docs/) to get more details about this solution and functionality provided.
 
 
 ---
