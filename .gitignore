@@ -55,6 +55,7 @@ Thumbs.db
 
 # Other
 *.drawio.bkp
+*.drawio.dtmp
 *.sqlite.db
 config.json
 !/src/Resources/config.json
