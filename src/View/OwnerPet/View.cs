@@ -41,7 +41,7 @@ namespace kms.View.OwnerPet
         {
             if (action == null)
             {
-                action = ViewUtils.CreateButton(parent, "Remove", Pos.Center(), Pos.AnchorEnd(1), Colors.Menu);
+                action = ViewUtils.CreateButton(parent, "Remove", Pos.Percent(30), Pos.AnchorEnd(1), Colors.Error);
                 action.Clicked += async () =>
                 {
                     await _ownerService.RemoveOwnerAsync(id);
@@ -55,7 +55,7 @@ namespace kms.View.OwnerPet
         {
             if (action == null)
             {
-                action = ViewUtils.CreateButton(parent, "Remove", Pos.Center(), Pos.AnchorEnd(1), Colors.Menu);
+                action = ViewUtils.CreateButton(parent, "Remove", Pos.Percent(30), Pos.AnchorEnd(1), Colors.Error);
                 action.Clicked += async () =>
                 {
                     await _petService.RemovePetAsync(id);

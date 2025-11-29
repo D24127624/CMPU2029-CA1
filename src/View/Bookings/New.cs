@@ -118,43 +118,14 @@ namespace kms.View.Bookings
                         action.Clicked += async () =>
                         {
                             BookingGroup group = ModelUtils.CreateBookingGroup(pet, kennel, startDate, endDate);
-                            ShowConfirmationScreen(pet, await _bookingService.CreateBookingsAsync(group));
+                            ShowConfirmationScreen(pet, group.GroupId, await _bookingService.CreateBookingsAsync(group));
                         };
                     }
                 }
             );
         }
 
-        private void DisplayKennelResults(FrameView frame, Pet pet, DateTime startDate, DateTime endDate, List<Kennel> results)
-        {
-            // initialize frame
-            if (InitResultFrame(frame, results.Count, "No kennels available for the selected period!"))
-            {
-                // build data table values
-                List<Dictionary<string, object?>> values = [];
-                foreach (Kennel kennel in results)
-                {
-                    values.Add(new Dictionary<string, object?>
-                        {
-                            {"ID", kennel.Id},
-                            {"Name", kennel.Name},
-                            {"Size", $"{kennel.Size}"},
-                            {"Suitable For", $"{kennel.SuitableFor}"}
-                        }
-                    );
-                }
-
-                // display table and action buttons
-                TableView resultTable = ViewUtils.CreateTable(frame, 1, 1, Dim.Fill() - 2, Dim.Fill() - 1, values);
-                Button? complete = null;
-                resultTable.SelectedCellChanged += (args) =>
-                {
-
-                };
-            }
-        }
-
-        private void ShowConfirmationScreen(Pet pet, List<Booking> results)
+        private void ShowConfirmationScreen(Pet pet, string groupId, List<Booking> results)
         {
             ShowOwnerPetDetails(pet);
 
@@ -181,7 +152,9 @@ namespace kms.View.Bookings
 
             // display booking confirmation
             FrameView resultsFrame = BuildResultsFrame("Booking Confirmation", 2, 9);
-            TableView resultTable = ViewUtils.CreateTable(resultsFrame, 2, 1, Dim.Fill() - 2, Dim.Fill() - 1, values);
+            Label label = ViewUtils.CreateLabel(resultsFrame, "Booking created successfully! Your Confirmation ID is:", 2, 1);
+            ViewUtils.CreateLabel(resultsFrame, groupId, Pos.Right(label) + 1, 1, Colors.Menu);
+            ViewUtils.CreateTable(resultsFrame, 2, 3, Dim.Fill() - 2, Dim.Fill() - 1, values);
         }
 
     }
